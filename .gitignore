@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+#img admin little
+src/assets/plugins/
+src/assets/dist/
