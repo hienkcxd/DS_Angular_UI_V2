@@ -8,6 +8,7 @@ import { FooterComponent } from './module/layout/footer/footer.component';
 import { AdminSidebarComponent } from './module/layout/admin-sidebar/admin-sidebar.component';
 import { UserSidebarComponent } from './module/layout/user-sidebar/user-sidebar.component';
 import {DataTablesModule} from "angular-datatables";
+import {HomeModule} from "./module/home/home.module";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {DataTablesModule} from "angular-datatables";
   imports: [
     BrowserModule,
     DataTablesModule,
+    HomeModule,
     AppRoutingModule
   ],
   providers: [],
