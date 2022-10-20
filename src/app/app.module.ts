@@ -9,6 +9,7 @@ import { AdminSidebarComponent } from './module/layout/admin-sidebar/admin-sideb
 import { UserSidebarComponent } from './module/layout/user-sidebar/user-sidebar.component';
 import {DataTablesModule} from "angular-datatables";
 import {HomeModule} from "./module/home/home.module";
+import {SystemModule} from "./module/system/system.module";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {HomeModule} from "./module/home/home.module";
     BrowserModule,
     DataTablesModule,
     HomeModule,
+    SystemModule,
     AppRoutingModule
   ],
   providers: [],
