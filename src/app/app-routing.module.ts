@@ -8,11 +8,20 @@ import {UserManagerMainComponent} from "./module/system/user-manager/user-manage
 import {StoreMainComponent} from "./module/system/store-list/store-main/store-main.component";
 import {DeviceMainComponent} from "./module/system/device-area/device-main/device-main.component";
 import {NotiMainComponent} from "./module/system/noti-daily/noti-main/noti-main.component";
+import {VideosMainComponent} from "./module/files/videos/videos-main/videos-main.component";
+import {FormUploadVideoComponent} from "./module/files/videos/form-upload-video/form-upload-video.component";
 
 const routes: Routes = [
   // {path:"", component: LoginComponent},
   // {path:"404", component: Errors404Component},
   // {path:"500", component: Errors500Component},
+  {
+    path: "files/videos",
+    children: [
+      {path: "", component: VideosMainComponent},
+      {path:"upload", component:  FormUploadVideoComponent},
+    ]
+  },
   {path:"home", component: HomeMainComponent},
   {path:"user-detail", component: ProfileMainComponent},
   {path: "manage-user", component:UserManagerMainComponent},

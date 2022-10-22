@@ -8,14 +8,17 @@ import {DataTablesModule} from "angular-datatables";
 
 
 @NgModule({
-  declarations: [
-    CardComponent,
-    TableComponent,
-    HomeMainComponent
-  ],
-  imports: [
-    CommonModule,
-    DataTablesModule
-  ]
+    declarations: [
+        CardComponent,
+        TableComponent,
+        HomeMainComponent
+    ],
+    exports: [
+        TableComponent
+    ],
+    imports: [
+        CommonModule,
+        DataTablesModule
+    ]
 })
 export class HomeModule { }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {VideosModule} from "./videos/videos.module";
 import {PlayListModule} from "./play-list/play-list.module";
 import {BroadcastScheduleModule} from "./broadcast-schedule/broadcast-schedule.module";
+import {DataTablesModule} from "angular-datatables";
 
 
 
