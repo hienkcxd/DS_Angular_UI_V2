@@ -1,15 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserManagerMainComponent } from './user-manager-main/user-manager-main.component';
+import { UserTableComponent } from './user-table/user-table.component';
+import {DataTablesModule} from "angular-datatables";
+import { UserCreateFormComponent } from './user-create-form/user-create-form.component';
+import {BrowserModule} from "@angular/platform-browser";
+import {HttpClientModule} from "@angular/common/http";
+import {RouterLinkWithHref} from "@angular/router";
 
 
 
 @NgModule({
   declarations: [
-    UserManagerMainComponent
+    UserManagerMainComponent,
+    UserTableComponent,
+    UserCreateFormComponent
   ],
   imports: [
-    CommonModule
+    BrowserModule,
+    DataTablesModule,
+    RouterLinkWithHref
   ]
 })
 export class UserManagerModule { }

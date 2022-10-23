@@ -8,14 +8,26 @@ import {UserManagerMainComponent} from "./module/system/user-manager/user-manage
 import {StoreMainComponent} from "./module/system/store-list/store-main/store-main.component";
 import {DeviceMainComponent} from "./module/system/device-area/device-main/device-main.component";
 import {NotiMainComponent} from "./module/system/noti-daily/noti-main/noti-main.component";
+import * as path from "path";
+import {UserCreateFormComponent} from "./module/system/user-manager/user-create-form/user-create-form.component";
 
 const routes: Routes = [
   // {path:"", component: LoginComponent},
   // {path:"404", component: Errors404Component},
   // {path:"500", component: Errors500Component},
+  {path: "system", children:[
+      {path: "", redirectTo: "manage-user", pathMatch: "full"},
+      {path: "manage-user", children:[
+          {path:"", component:UserManagerMainComponent},
+          {path: "create-user", component: UserCreateFormComponent},
+          {path: "detail-user", component: UserCreateFormComponent},
+          {path: "update-user", component: UserCreateFormComponent},
+          {path: "delete-user", component: UserCreateFormComponent},
+        ]},
+
+    ]},
   {path:"home", component: HomeMainComponent},
   {path:"user-detail", component: ProfileMainComponent},
-  {path: "manage-user", component:UserManagerMainComponent},
   {path: "store-list", component:StoreMainComponent},
   {path: "area-device", component:DeviceMainComponent},
   {path: "noti-daily", component:NotiMainComponent},

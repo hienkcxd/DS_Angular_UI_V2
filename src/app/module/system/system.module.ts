@@ -8,7 +8,8 @@ import {UserManagerModule} from "./user-manager/user-manager.module";
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     DeviceAreaModule,
