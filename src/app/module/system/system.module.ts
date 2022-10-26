@@ -7,8 +7,10 @@ import {UserManagerModule} from "./user-manager/user-manager.module";
 
 
 
+
 @NgModule({
   declarations: [
+
   ],
   imports: [
     CommonModule,
@@ -16,6 +18,7 @@ import {UserManagerModule} from "./user-manager/user-manager.module";
     NotiDailyModule,
     StoreListModule,
     UserManagerModule,
+
   ]
 })
 export class SystemModule { }

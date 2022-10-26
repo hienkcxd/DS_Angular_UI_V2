@@ -1,96 +1,53 @@
-<section class="content-header">
-  <div class="container-fluid">
-
-  </div><!-- /.container-fluid -->
-</section>
-
-<section class="content">
-  <div class="container-fluid">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title text-primary text-xl">Danh Sách User -
-          <a routerLink="create-user"  class="btn btn-outline-primary btn-lg hover">Create</a>
-        </h3>
+<div class="section-body">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="buttons">
       </div>
+      <div class="card">
+        <a routerLink="create-user" href="#" class="btn btn-icon btn-success"  title="Add User" data-toggle="tooltip" ><i class="fas fa-user-plus"></i></a>
+        <div class="card-header">
+          <h4>Manager Account User </h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table datatable class="table table-striped table-hover"[dtOptions]="dtOptions" tabindex="0" id="tableExport"  style="width:100%;" >
+              <thead>
+              <tr>
+                <th>Seri No</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Mail</th>
+                <th>Username</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Trident</td>
+                <td>Internet
+                  Explorer 4.0
+                </td>
+                <td>Win 95+</td>
+                <td> 4</td>
+                <td class="row justify-content-center">
+                  <a routerLink="detail-user" title="Detail Store" class="btn btn-primary btn-action mr-1 "><i class="fas fa-info-circle"></i></a>
+                  <a routerLink="update-user" title="Update Store" class="btn btn-primary btn-action mr-1"><i class="fas fa-pencil-alt"></i></a>
+                  <a routerLink="delete-user" title="Delete Store" class="btn btn-danger btn-action"><i class="fas fa-trash"></i></a>
 
-      <!-- /.card-header -->
-      <div class="card-body">
-        <table datatable class="table table-bordered table-striped" [dtOptions]="dtOptions">
-          <thead>
-          <tr>
-            <th>col1</th>
-            <th>col2</th>
-            <th>col3</th>
-            <th>col4</th>
-            <th>col5</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Trident</td>
-            <td>Internet
-              Explorer 4.0
-            </td>
-            <td>Win 95+</td>
-            <td> 4</td>
-            <td class="row justify-content-center">
-              <a routerLink="detail-user"  class="btn btn-outline-info btn-sm hover ">Detail</a>
-              <a routerLink="update-user"  class="btn btn-outline-secondary btn-sm hover mx-sm-3">Update</a>
-              <a routerLink="delete-user"  class="btn btn-outline-danger btn-sm hover">Delete</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Trident</td>
-            <td>Internet
-              Explorer 4.0
-            </td>
-            <td>Win 95+</td>
-            <td> 4</td>
-            <td class="row justify-content-center">
-              <a routerLink="detail-user"  class="btn btn-outline-info btn-sm hover ">Detail</a>
-              <a routerLink="update-user"  class="btn btn-outline-secondary btn-sm hover mx-sm-3">Update</a>
-              <a routerLink="delete-user"  class="btn btn-outline-danger btn-sm hover">Delete</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Trident</td>
-            <td>Internet
-              Explorer 4.0
-            </td>
-            <td>Win 95+</td>
-            <td> 4</td>
-            <td class="row justify-content-center">
-              <a routerLink="detail-user"  class="btn btn-outline-info btn-sm hover ">Detail</a>
-              <a routerLink="update-user"  class="btn btn-outline-secondary btn-sm hover mx-sm-3">Update</a>
-              <a routerLink="delete-user"  class="btn btn-outline-danger btn-sm hover">Delete</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Trident</td>
-            <td>Internet
-              Explorer 4.0
-            </td>
-            <td>Win 95+</td>
-            <td> 4</td>
-            <td class="row justify-content-center">
-              <a routerLink="detail-user"  class="btn btn-outline-info btn-sm hover ">Detail</a>
-              <a routerLink="update-user"  class="btn btn-outline-secondary btn-sm hover mx-sm-3">Update</a>
-              <a routerLink="delete-user"  class="btn btn-outline-danger btn-sm hover">Delete</a>
-            </td>
-          </tr>
-          </tbody>
-          <tfoot>
-          <tr>
-            <th>Rendering engine</th>
-            <th>Browser</th>
-            <th>Platform(s)</th>
-            <th>Engine version</th>
-            <th>CSS grade</th>
-          </tr>
-          </tfoot>
-        </table>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-      <!-- /.card-body -->
     </div>
-  </div><!-- /.container-fluid -->
-</section>
+  </div>
+</div>
+
+
+
+
+
+
+
+

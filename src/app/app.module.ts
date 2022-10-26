@@ -24,7 +24,7 @@ import {SystemModule} from "./module/system/system.module";
     DataTablesModule,
     HomeModule,
     SystemModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

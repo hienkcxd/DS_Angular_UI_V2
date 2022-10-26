@@ -13,7 +13,7 @@ export class UserTableComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 7,
-      lengthMenu: [7, 10, 15],
+      lengthMenu: [1,2,3,4,5,6,7],
       // Declare the use of the extension in the dom parameter
       dom: 'Blfrtip',
       // Configure the buttons
@@ -22,19 +22,19 @@ export class UserTableComponent implements OnInit {
       ],
       columns: [
         {
-          title: 'col1',
-          data: 'col1'
+          title: 'id',
+          data: 'id'
         },
         {
-          title: 'col2',
-          data: 'col2'
+          title: 'name',
+          data: 'name'
         },
         {
-          title: 'col3',
-          data: 'col3'
+          title: 'email',
+          data: 'email'
         },
         {
-          title: 'col4',
+          title: 'phone',
           data: 'col4'
         },
         {
