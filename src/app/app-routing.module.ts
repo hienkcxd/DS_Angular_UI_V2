@@ -40,6 +40,21 @@ import {
 import {
   OperatorHistoryDetailComponent
 } from "./module/devices/operator-history/operator-history-detail/operator-history-detail.component";
+import {
+  ContentSelectorDeleteComponent
+} from "./module/devices/content-selector/content-selector-delete/content-selector-delete.component";
+import {
+  ContentSelectorDetailComponent
+} from "./module/devices/content-selector/content-selector-detail/content-selector-detail.component";
+import {
+  ContentSelectorUpdateComponent
+} from "./module/devices/content-selector/content-selector-update/content-selector-update.component";
+import {
+  OperatorHistoryDeleteComponent
+} from "./module/devices/operator-history/operator-history-delete/operator-history-delete.component";
+import {
+  OperatorHistoryUpdateComponent
+} from "./module/devices/operator-history/operator-history-update/operator-history-update.component";
 
 const routes: Routes = [
   {path: "devices", children:[
@@ -60,10 +75,15 @@ const routes: Routes = [
       {path: "content-selector", children:[
           {path:"", component:ContentSelectorMainComponent},
           {path: "create-content-selector", component: ContentSelectorCreateComponent},
+          {path: "delete-content-selector", component: ContentSelectorDeleteComponent},
+          {path: "detail-content-selector", component: ContentSelectorDetailComponent},
+          {path: "update-content-selector", component: ContentSelectorUpdateComponent},
         ]},
       {path: "operator-history", children:[
           {path:"", component:OperatorHistoryMainComponent},
           {path: "operator-history-detail", component: OperatorHistoryDetailComponent},
+          {path: "operator-history-delete", component: OperatorHistoryDeleteComponent},
+          {path: "operator-history-update", component: OperatorHistoryUpdateComponent},
         ]}
     ]},
   // {path:"", component: LoginComponent},
