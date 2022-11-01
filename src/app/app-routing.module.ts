@@ -10,6 +10,9 @@ import {DeviceMainComponent} from "./module/system/device-area/device-main/devic
 import {NotiMainComponent} from "./module/system/noti-daily/noti-main/noti-main.component";
 import {VideosMainComponent} from "./module/files/videos/videos-main/videos-main.component";
 import {FormUploadVideoComponent} from "./module/files/videos/form-upload-video/form-upload-video.component";
+import {
+  BroadcastScheduleMainComponent
+} from "./module/files/broadcast-schedule/broadcast-schedule-main/broadcast-schedule-main.component";
 
 const routes: Routes = [
   // {path:"", component: LoginComponent},
@@ -28,6 +31,7 @@ const routes: Routes = [
   {path: "store-list", component:StoreMainComponent},
   {path: "area-device", component:DeviceMainComponent},
   {path: "noti-daily", component:NotiMainComponent},
+  {path: "broadcast-schedule", component:BroadcastScheduleMainComponent},
 ];
 
 @NgModule({
