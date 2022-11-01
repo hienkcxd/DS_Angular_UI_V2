@@ -11,6 +11,7 @@ import {DataTablesModule} from "angular-datatables";
 import {HomeModule} from "./module/home/home.module";
 import {SystemModule} from "./module/system/system.module";
 import {FilesModule} from "./module/files/files.module";
+import {ReportsModule} from "./module/reports/reports.module";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {FilesModule} from "./module/files/files.module";
     HomeModule,
     SystemModule,
     FilesModule,
+    ReportsModule,
     AppRoutingModule
   ],
   providers: [],

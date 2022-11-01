@@ -13,6 +13,13 @@ import {FormUploadVideoComponent} from "./module/files/videos/form-upload-video/
 import {
   BroadcastScheduleMainComponent
 } from "./module/files/broadcast-schedule/broadcast-schedule-main/broadcast-schedule-main.component";
+import {MainPlayListComponent} from "./module/files/play-list/main-play-list/main-play-list.component";
+import {
+  HistoryBroadcastMainComponent
+} from "./module/reports/history-broadcast/history-broadcast-main/history-broadcast-main.component";
+import {
+  HistorySupportMainComponent
+} from "./module/reports/history-support/history-support-main/history-support-main.component";
 
 const routes: Routes = [
   // {path:"", component: LoginComponent},
@@ -32,6 +39,10 @@ const routes: Routes = [
   {path: "area-device", component:DeviceMainComponent},
   {path: "noti-daily", component:NotiMainComponent},
   {path: "broadcast-schedule", component:BroadcastScheduleMainComponent},
+  {path: "play-list", component:MainPlayListComponent},
+  {path: "history-broadcast", component:HistoryBroadcastMainComponent},
+  {path: "history-insurance", component:HistoryBroadcastMainComponent},
+  {path: "history-support", component:HistorySupportMainComponent},
 ];
 
 @NgModule({

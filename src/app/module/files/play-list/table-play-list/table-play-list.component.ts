@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-table-playlist',
-  templateUrl: './table-playlist.component.html',
-  styleUrls: ['./table-playlist.component.scss']
+  selector: 'app-table-play-list',
+  templateUrl: './table-play-list.component.html',
+  styleUrls: ['./table-play-list.component.scss']
 })
-export class TablePlaylistComponent implements OnInit {
+export class TablePlayListComponent implements OnInit {
 
   constructor() { }
   dtOptions: any = {};
