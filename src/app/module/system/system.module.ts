@@ -17,7 +17,7 @@ import {UserManagerModule} from "./user-manager/user-manager.module";
     DeviceAreaModule,
     NotiDailyModule,
     StoreListModule,
-    UserManagerModule,
+    UserManagerModule
 
   ]
 })
