@@ -10,6 +10,8 @@ import { UserSidebarComponent } from './module/layout/user-sidebar/user-sidebar.
 import {DataTablesModule} from "angular-datatables";
 import {HomeModule} from "./module/home/home.module";
 import {SystemModule} from "./module/system/system.module";
+import {ReportsModule} from "./module/reports/reports.module";
+
 
 @NgModule({
   declarations: [
@@ -17,13 +19,14 @@ import {SystemModule} from "./module/system/system.module";
     HeaderComponent,
     FooterComponent,
     AdminSidebarComponent,
-    UserSidebarComponent
+    UserSidebarComponent,
   ],
   imports: [
     BrowserModule,
     DataTablesModule,
     HomeModule,
     SystemModule,
+    ReportsModule,
     AppRoutingModule,
   ],
   providers: [],

@@ -20,7 +20,7 @@ import { UserDetailFormComponent } from './user-detail-form/user-detail-form.com
     UserCreateFormComponent,
     UserEditFormComponent,
     UserDeleteFormComponent,
-    UserDetailFormComponent
+    UserDetailFormComponent,
   ],
   imports: [
     BrowserModule,
