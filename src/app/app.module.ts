@@ -12,6 +12,7 @@ import {HomeModule} from "./module/home/home.module";
 import {SystemModule} from "./module/system/system.module";
 import {DevicesModule} from "./module/devices/devices.module";
 import {ReportsModule} from "./module/reports/reports.module";
+import {FilesModule} from "./module/files/files.module";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {ReportsModule} from "./module/reports/reports.module";
     HomeModule,
     SystemModule,
     ReportsModule,
+    FilesModule,
     AppRoutingModule,
     DevicesModule,
 

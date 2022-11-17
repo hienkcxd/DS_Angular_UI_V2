@@ -116,6 +116,39 @@ import {
 import {
   SupportDeleteFormComponent
 } from "./module/reports/history-support/support-delete-form/support-delete-form.component";
+import {
+  ScheduleUpdateFormComponent
+} from "./module/files/broadcast-schedule/schedule-update-form/schedule-update-form.component";
+import {
+  ScheduleDetailFormComponent
+} from "./module/files/broadcast-schedule/schedule-detail-form/schedule-detail-form.component";
+import {
+  ScheduleDeleteFormComponent
+} from "./module/files/broadcast-schedule/schedule-delete-form/schedule-delete-form.component";
+import {
+  ScheduleCreateFormComponent
+} from "./module/files/broadcast-schedule/schedule-create-form/schedule-create-form.component";
+import {
+  ScheduleTableFormComponent
+} from "./module/files/broadcast-schedule/schedule-table-form/schedule-table-form.component";
+import {PlaylistTableFormComponent} from "./module/files/play-list/playlist-table-form/playlist-table-form.component";
+import {
+  PlaylistCreateFormComponent
+} from "./module/files/play-list/playlist-create-form/playlist-create-form.component";
+import {
+  PlaylistDetailFormComponent
+} from "./module/files/play-list/playlist-detail-form/playlist-detail-form.component";
+import {
+  PlaylistUpdateFormComponent
+} from "./module/files/play-list/playlist-update-form/playlist-update-form.component";
+import {
+  PlaylistDeleteFormComponent
+} from "./module/files/play-list/playlist-delete-form/playlist-delete-form.component";
+import {VideosTableFormComponent} from "./module/files/videos/videos-table-form/videos-table-form.component";
+import {VideosCreateFormComponent} from "./module/files/videos/videos-create-form/videos-create-form.component";
+import {VideosDetailFormComponent} from "./module/files/videos/videos-detail-form/videos-detail-form.component";
+import {VideosUpdateFormComponent} from "./module/files/videos/videos-update-form/videos-update-form.component";
+import {VideosDeleteFormComponent} from "./module/files/videos/videos-delete-form/videos-delete-form.component";
 
 
 const routes: Routes = [
@@ -179,6 +212,34 @@ const routes: Routes = [
           {path: "update-device", component: DeviceEditFormComponent},
           {path: "delete-device", component: DeviceDeleteFormComponent},
         ]},
+
+    ]},
+
+  //-------------------FILES--------------------------------//
+  {path: "files", children:[
+      {path: "", redirectTo: "broadcast-schedule", pathMatch: "full"},
+      {path: "broadcast-schedule", children:[
+          {path:"", component: ScheduleTableFormComponent},
+          {path: "create-schedule", component: ScheduleCreateFormComponent},
+          {path: "detail-schedule", component: ScheduleDetailFormComponent},
+          {path: "update-schedule", component: ScheduleUpdateFormComponent},
+          {path: "delete-schedule", component: ScheduleDeleteFormComponent},
+        ]},
+      {path: "play-list", children:[
+          {path:"", component:PlaylistTableFormComponent},
+          {path: "create-playlist", component: PlaylistCreateFormComponent},
+          {path: "detail-playlist", component: PlaylistDetailFormComponent},
+          {path: "update-playlist", component: PlaylistUpdateFormComponent},
+          {path: "delete-playlist", component: PlaylistDeleteFormComponent},
+        ]},
+      {path: "videos", children:[
+          {path:"", component:VideosTableFormComponent},
+          {path: "create-videos", component: VideosCreateFormComponent},
+          {path: "detail-videos", component: VideosDetailFormComponent},
+          {path: "update-videos", component: VideosUpdateFormComponent},
+          {path: "delete-videos", component: VideosDeleteFormComponent},
+        ]},
+
 
     ]},
 
