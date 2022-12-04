@@ -149,9 +149,11 @@ import {VideosCreateFormComponent} from "./module/files/videos/videos-create-for
 import {VideosDetailFormComponent} from "./module/files/videos/videos-detail-form/videos-detail-form.component";
 import {VideosUpdateFormComponent} from "./module/files/videos/videos-update-form/videos-update-form.component";
 import {VideosDeleteFormComponent} from "./module/files/videos/videos-delete-form/videos-delete-form.component";
+import {LoginComponent} from "./module/login/login/login.component";
 
 
 const routes: Routes = [
+  {path:"login", component: LoginComponent},
   {path: "devices", children:[
       {path: "", redirectTo: "group-device", pathMatch: "full"},
       {path: "group-device", children:[

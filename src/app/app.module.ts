@@ -13,6 +13,7 @@ import {SystemModule} from "./module/system/system.module";
 import {DevicesModule} from "./module/devices/devices.module";
 import {ReportsModule} from "./module/reports/reports.module";
 import {FilesModule} from "./module/files/files.module";
+import {LoginModule} from "./module/login/login.module";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {FilesModule} from "./module/files/files.module";
     BrowserModule,
     DataTablesModule,
     HomeModule,
+    LoginModule,
     SystemModule,
     ReportsModule,
     FilesModule,
