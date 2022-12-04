@@ -14,6 +14,7 @@ import {DevicesModule} from "./module/devices/devices.module";
 import {ReportsModule} from "./module/reports/reports.module";
 import {FilesModule} from "./module/files/files.module";
 import {LoginModule} from "./module/login/login.module";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {LoginModule} from "./module/login/login.module";
     FilesModule,
     AppRoutingModule,
     DevicesModule,
+    HttpClientModule,
 
   ],
   providers: [],
