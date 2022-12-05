@@ -91,7 +91,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "DS_Angular_UI_V2:build"
+            "browserTarget": "DS_Angular_UI_V2:build",
           }
         },
         "test": {
