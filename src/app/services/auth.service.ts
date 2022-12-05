@@ -1,21 +1,17 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams, HttpStatusCode} from "@angular/common/http";
 import {User} from "../model/user";
-import {BehaviorSubject, catchError, map, observable, Observable} from "rxjs";
-import * as Domain from "domain";
-import {data} from "jquery";
 import {Router} from "@angular/router";
-import {getXHRResponse} from "rxjs/internal/ajax/getXHRResponse";
-import {observableToBeFn} from "rxjs/internal/testing/TestScheduler";
-import {Role} from "../model/role";
 import jwtDecode, {JwtPayload} from "jwt-decode";
+import {map} from "rxjs";
+import {data} from "jquery";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private httpClient: HttpClient, public router: Router) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
   private baseUrl_Login = "http://localhost:8080";
 
   loginUser(user : User){
@@ -55,16 +51,19 @@ export class AuthService {
         this.router.navigate(['/login'])
       });
     }
-    isLoggedIn(apiUrl:string){
+
+    isLoggedIn(){
       let httpOptions = {
-        headers: new HttpHeaders()
-          .set('Authorization',  `${localStorage.getItem('access_token')}`)
+        headers: new HttpHeaders().set('Authorization',`${localStorage.getItem('access_token')}`),
+        responseType: 'text' as 'json'
       };
-      return this.httpClient.post(`${this.baseUrl_Login}+${apiUrl}`,httpOptions).subscribe(data=>{
-        return true;
-      },error=>{
+      let status = this.httpClient.get<object>(`${this.baseUrl_Login}/api/login-token`,httpOptions).subscribe(data=>{
+
+      }, error => {
         return false;
-      });
+      })
+      console.log(Object.values(status)[0])
+      return true;
     }
 
 

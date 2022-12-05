@@ -150,10 +150,12 @@ import {VideosDetailFormComponent} from "./module/files/videos/videos-detail-for
 import {VideosUpdateFormComponent} from "./module/files/videos/videos-update-form/videos-update-form.component";
 import {VideosDeleteFormComponent} from "./module/files/videos/videos-delete-form/videos-delete-form.component";
 import {LoginComponent} from "./module/login/login/login.component";
+import {AuthGuard} from "./services/auth.guard";
 
 
 const routes: Routes = [
   {path:"login", component: LoginComponent},
+  //-------------------DEVICE--------------------------------//
   {path: "devices", children:[
       {path: "", redirectTo: "group-device", pathMatch: "full"},
       {path: "group-device", children:[
@@ -183,6 +185,7 @@ const routes: Routes = [
           {path: "operator-history-update", component: OperatorHistoryUpdateComponent},
         ]}
     ]},
+
   //-------------------SYSTEM--------------------------------//
   {path: "system", children:[
       {path: "", redirectTo: "manage-user", pathMatch: "full"},
@@ -245,7 +248,7 @@ const routes: Routes = [
 
     ]},
 
-  //-------------------SYSTEM--------------------------------//
+  //-------------------REPORT--------------------------------//
   {path: "reports", children:[
       {path: "", redirectTo: "history-broadcast", pathMatch: "full"},
       {path: "history-broadcast", children:[
@@ -276,7 +279,7 @@ const routes: Routes = [
   // {path:"", component: LoginComponent},
   // {path:"404", component: Errors404Component},
   // {path:"500", component: Errors500Component},
-  {path:"home", component: HomeMainComponent},
+  {path:"home", component: HomeMainComponent, canActivate: [AuthGuard]},
   {path:"user-detail", component: ProfileMainComponent},
   {path: "manage-user", component:UserManagerMainComponent},
   {path: "store-list", component:StoreMainComponent},
