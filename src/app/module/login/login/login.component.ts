@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../../../model/user";
 import {AuthService} from "../../../services/auth.service";
 import {data} from "jquery";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -12,16 +13,14 @@ export class LoginComponent implements OnInit {
 
   user:User = new User();
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, public router: Router) { }
 
   ngOnInit(): void {
   }
 
   userLogin(){
     console.log(this.user)
-    this.authService.loginUser(this.user).subscribe(data=>{
-      alert("login success");
-    },error=>alert("failed"))
+    this.authService.loginUser(this.user);
   }
 
 }
