@@ -15,6 +15,7 @@ import {ReportsModule} from "./module/reports/reports.module";
 import {FilesModule} from "./module/files/files.module";
 import {LoginModule} from "./module/login/login.module";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {LogginLayoutComponent} from "./loggin-layout/loggin-layout.component";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     HeaderComponent,
     FooterComponent,
     AdminSidebarComponent,
-    UserSidebarComponent
+    UserSidebarComponent,
+    LogginLayoutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DS_Angular_UI_V2';
+  isLoggin!:boolean;
+  constructor(private auth:AuthService) {
+  }
+  Logged(){
+    console.log('component test: ' + this.isLoggin)
+    return this.isLoggin = this.auth.isLoggedIn();
+  }
 }

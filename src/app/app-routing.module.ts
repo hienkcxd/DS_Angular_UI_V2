@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {HomeMainComponent} from "./module/home/home-main/home-main.component";
 import {ProfileMainComponent} from "./module/profile/profile-main/profile-main.component";
-import {UserManagerModule} from "./module/system/user-manager/user-manager.module";
-import {StoreListModule} from "./module/system/store-list/store-list.module";
 import {UserManagerMainComponent} from "./module/system/user-manager/user-manager-main/user-manager-main.component";
 import {StoreMainComponent} from "./module/system/store-list/store-main/store-main.component";
 import {DeviceMainComponent} from "./module/system/device-area/device-main/device-main.component";
@@ -34,9 +32,6 @@ import {
 import {
   OperatorHistoryMainComponent
 } from "./module/devices/operator-history/operator-history-main/operator-history-main.component";
-import {
-  OperatorHistoryTableComponent
-} from "./module/devices/operator-history/operator-history-table/operator-history-table.component";
 import {
   OperatorHistoryDetailComponent
 } from "./module/devices/operator-history/operator-history-detail/operator-history-detail.component";
@@ -151,141 +146,149 @@ import {VideosUpdateFormComponent} from "./module/files/videos/videos-update-for
 import {VideosDeleteFormComponent} from "./module/files/videos/videos-delete-form/videos-delete-form.component";
 import {LoginComponent} from "./module/login/login/login.component";
 import {AuthGuard} from "./services/auth.guard";
+import {AppComponent} from "./app.component";
+import * as path from "path";
+import {LogginLayoutComponent} from "./loggin-layout/loggin-layout.component";
 
 
 const routes: Routes = [
-  {path:"login", component: LoginComponent},
+  {path:"login", component: LogginLayoutComponent, children:[
+      {path:"", component: LoginComponent}
+    ]},
   //-------------------DEVICE--------------------------------//
-  {path: "devices", children:[
-      {path: "", redirectTo: "group-device", pathMatch: "full"},
-      {path: "group-device", children:[
-          {path:"", component:GroupDeviceMainComponent},
-          {path: "create-device", component: GroupDeviceCreateComponent},
-          {path: "detail-device", component: GroupDeviceDetailComponent},
-          {path: "update-device", component: GroupDeviceUpdateComponent},
-          {path: "delete-device", component: GroupDeviceDeleteComponent},
-        ]},
-      {path: "status", children:[
-          {path:"", component:StatusMainComponent},
-          {path: "status-detail", component: StatusDetailComponent},
-          {path: "status-update", component: StatusUpdateComponent},
-          {path: "status-delete", component: StatusDeleteComponent},
-        ]},
-      {path: "content-selector", children:[
-          {path:"", component:ContentSelectorMainComponent},
-          {path: "create-content-selector", component: ContentSelectorCreateComponent},
-          {path: "delete-content-selector", component: ContentSelectorDeleteComponent},
-          {path: "detail-content-selector", component: ContentSelectorDetailComponent},
-          {path: "update-content-selector", component: ContentSelectorUpdateComponent},
-        ]},
-      {path: "operator-history", children:[
-          {path:"", component:OperatorHistoryMainComponent},
-          {path: "operator-history-detail", component: OperatorHistoryDetailComponent},
-          {path: "operator-history-delete", component: OperatorHistoryDeleteComponent},
-          {path: "operator-history-update", component: OperatorHistoryUpdateComponent},
-        ]}
-    ]},
-
-  //-------------------SYSTEM--------------------------------//
-  {path: "system", children:[
-      {path: "", redirectTo: "manage-user", pathMatch: "full"},
-      {path: "manage-user", children:[
-          {path:"", component:UserManagerMainComponent},
-          {path: "create-user", component: UserCreateFormComponent},
-          {path: "detail-user", component: UserDetailFormComponent},
-          {path: "update-user", component: UserEditFormComponent},
-          {path: "delete-user", component: UserDeleteFormComponent},
-        ]},
-      {path: "store-list", children:[
-          {path:"", component:StoreMainComponent},
-          {path: "create-store", component: StoreListCreateComponent},
-          {path: "detail-store", component: StoreListDetailComponent},
-          {path: "update-store", component: StoreListEditComponent},
-          {path: "delete-store", component: StoreListDeleteComponent},
-        ]},
-      {path: "noti-daily", children:[
-          {path:"", component:NotiMainComponent},
-          {path: "create-noti", component: NotiCreateFormComponent},
-          {path: "detail-noti", component: NotiDetailFormComponent},
-          {path: "update-noti", component: NotiEditFormComponent},
-          {path: "delete-noti", component: NotiDeleteFormComponent},
-        ]},
-      {path: "area-device", children:[
-          {path:"", component:DeviceMainComponent},
-          {path: "create-device", component: DeviceCreateFormComponent},
-          {path: "detail-device", component: DeviceDetailFormComponent},
-          {path: "update-device", component: DeviceEditFormComponent},
-          {path: "delete-device", component: DeviceDeleteFormComponent},
+  {path:"", component: AppComponent, children:[
+      {path: "devices", children:[
+          {path: "", redirectTo: "group-device", pathMatch: "full"},
+          {path: "group-device", children:[
+              {path:"", component:GroupDeviceMainComponent},
+              {path: "create-device", component: GroupDeviceCreateComponent},
+              {path: "detail-device", component: GroupDeviceDetailComponent},
+              {path: "update-device", component: GroupDeviceUpdateComponent},
+              {path: "delete-device", component: GroupDeviceDeleteComponent},
+            ]},
+          {path: "status", children:[
+              {path:"", component:StatusMainComponent},
+              {path: "status-detail", component: StatusDetailComponent},
+              {path: "status-update", component: StatusUpdateComponent},
+              {path: "status-delete", component: StatusDeleteComponent},
+            ]},
+          {path: "content-selector", children:[
+              {path:"", component:ContentSelectorMainComponent},
+              {path: "create-content-selector", component: ContentSelectorCreateComponent},
+              {path: "delete-content-selector", component: ContentSelectorDeleteComponent},
+              {path: "detail-content-selector", component: ContentSelectorDetailComponent},
+              {path: "update-content-selector", component: ContentSelectorUpdateComponent},
+            ]},
+          {path: "operator-history", children:[
+              {path:"", component:OperatorHistoryMainComponent},
+              {path: "operator-history-detail", component: OperatorHistoryDetailComponent},
+              {path: "operator-history-delete", component: OperatorHistoryDeleteComponent},
+              {path: "operator-history-update", component: OperatorHistoryUpdateComponent},
+            ]}
         ]},
 
-    ]},
+      //-------------------SYSTEM--------------------------------//
+      {path: "system", children:[
+          {path: "", redirectTo: "manage-user", pathMatch: "full"},
+          {path: "manage-user", children:[
+              {path:"", component:UserManagerMainComponent},
+              {path: "create-user", component: UserCreateFormComponent},
+              {path: "detail-user", component: UserDetailFormComponent},
+              {path: "update-user", component: UserEditFormComponent},
+              {path: "delete-user", component: UserDeleteFormComponent},
+            ]},
+          {path: "store-list", children:[
+              {path:"", component:StoreMainComponent},
+              {path: "create-store", component: StoreListCreateComponent},
+              {path: "detail-store", component: StoreListDetailComponent},
+              {path: "update-store", component: StoreListEditComponent},
+              {path: "delete-store", component: StoreListDeleteComponent},
+            ]},
+          {path: "noti-daily", children:[
+              {path:"", component:NotiMainComponent},
+              {path: "create-noti", component: NotiCreateFormComponent},
+              {path: "detail-noti", component: NotiDetailFormComponent},
+              {path: "update-noti", component: NotiEditFormComponent},
+              {path: "delete-noti", component: NotiDeleteFormComponent},
+            ]},
+          {path: "area-device", children:[
+              {path:"", component:DeviceMainComponent},
+              {path: "create-device", component: DeviceCreateFormComponent},
+              {path: "detail-device", component: DeviceDetailFormComponent},
+              {path: "update-device", component: DeviceEditFormComponent},
+              {path: "delete-device", component: DeviceDeleteFormComponent},
+            ]},
 
-  //-------------------FILES--------------------------------//
-  {path: "files", children:[
-      {path: "", redirectTo: "broadcast-schedule", pathMatch: "full"},
-      {path: "broadcast-schedule", children:[
-          {path:"", component: ScheduleTableFormComponent},
-          {path: "create-schedule", component: ScheduleCreateFormComponent},
-          {path: "detail-schedule", component: ScheduleDetailFormComponent},
-          {path: "update-schedule", component: ScheduleUpdateFormComponent},
-          {path: "delete-schedule", component: ScheduleDeleteFormComponent},
-        ]},
-      {path: "play-list", children:[
-          {path:"", component:PlaylistTableFormComponent},
-          {path: "create-playlist", component: PlaylistCreateFormComponent},
-          {path: "detail-playlist", component: PlaylistDetailFormComponent},
-          {path: "update-playlist", component: PlaylistUpdateFormComponent},
-          {path: "delete-playlist", component: PlaylistDeleteFormComponent},
-        ]},
-      {path: "videos", children:[
-          {path:"", component:VideosTableFormComponent},
-          {path: "create-videos", component: VideosCreateFormComponent},
-          {path: "detail-videos", component: VideosDetailFormComponent},
-          {path: "update-videos", component: VideosUpdateFormComponent},
-          {path: "delete-videos", component: VideosDeleteFormComponent},
-        ]},
-
-
-    ]},
-
-  //-------------------REPORT--------------------------------//
-  {path: "reports", children:[
-      {path: "", redirectTo: "history-broadcast", pathMatch: "full"},
-      {path: "history-broadcast", children:[
-          {path:"", component:BroadcastTableFormComponent},
-          {path: "create-broadcast", component: BroadcastCreateFormComponent},
-          {path: "detail-broadcast", component: BroadcastDetailFormComponent},
-          {path: "update-broadcast", component: BroadcastUpdateFormComponent},
-          {path: "delete-broadcast", component: BroadcastDeleteFormComponent},
-        ]},
-      {path: "history-insurance", children:[
-          {path:"", component:InsuranceTableFormComponent},
-          {path: "create-insurance", component: InsuranceCreateFormComponent},
-          {path: "detail-insurance", component: InsuranceDetailFormComponent},
-          {path: "update-insurance", component: InsuranceUpdateFormComponent},
-          {path: "delete-insurance", component: InsuranceDeleteFormComponent},
-        ]},
-      {path: "history-support", children:[
-          {path:"", component:SupportTableFormComponent},
-          {path: "create-support", component: SupportCreateFormComponent},
-          {path: "detail-support", component: SupportDetailFormComponent},
-          {path: "update-support", component: SupportUpdateFormComponent},
-          {path: "delete-support", component: SupportDeleteFormComponent},
         ]},
 
+      //-------------------FILES--------------------------------//
+      {path: "files", children:[
+          {path: "", redirectTo: "broadcast-schedule", pathMatch: "full"},
+          {path: "broadcast-schedule", children:[
+              {path:"", component: ScheduleTableFormComponent},
+              {path: "create-schedule", component: ScheduleCreateFormComponent},
+              {path: "detail-schedule", component: ScheduleDetailFormComponent},
+              {path: "update-schedule", component: ScheduleUpdateFormComponent},
+              {path: "delete-schedule", component: ScheduleDeleteFormComponent},
+            ]},
+          {path: "play-list", children:[
+              {path:"", component:PlaylistTableFormComponent},
+              {path: "create-playlist", component: PlaylistCreateFormComponent},
+              {path: "detail-playlist", component: PlaylistDetailFormComponent},
+              {path: "update-playlist", component: PlaylistUpdateFormComponent},
+              {path: "delete-playlist", component: PlaylistDeleteFormComponent},
+            ]},
+          {path: "videos", children:[
+              {path:"", component:VideosTableFormComponent},
+              {path: "create-videos", component: VideosCreateFormComponent},
+              {path: "detail-videos", component: VideosDetailFormComponent},
+              {path: "update-videos", component: VideosUpdateFormComponent},
+              {path: "delete-videos", component: VideosDeleteFormComponent},
+            ]},
 
-    ]},
 
-  // {path:"", component: LoginComponent},
-  // {path:"404", component: Errors404Component},
-  // {path:"500", component: Errors500Component},
-  {path:"home", component: HomeMainComponent, canActivate: [AuthGuard]},
-  {path:"user-detail", component: ProfileMainComponent},
-  {path: "manage-user", component:UserManagerMainComponent},
-  {path: "store-list", component:StoreMainComponent},
-  {path: "area-device", component:DeviceMainComponent},
-  {path: "noti-daily", component:NotiMainComponent},
-  {path: "group-device", component:GroupDeviceMainComponent},
+        ]},
+
+      //-------------------REPORT--------------------------------//
+      {path: "reports", children:[
+          {path: "", redirectTo: "history-broadcast", pathMatch: "full"},
+          {path: "history-broadcast", children:[
+              {path:"", component:BroadcastTableFormComponent},
+              {path: "create-broadcast", component: BroadcastCreateFormComponent},
+              {path: "detail-broadcast", component: BroadcastDetailFormComponent},
+              {path: "update-broadcast", component: BroadcastUpdateFormComponent},
+              {path: "delete-broadcast", component: BroadcastDeleteFormComponent},
+            ]},
+          {path: "history-insurance", children:[
+              {path:"", component:InsuranceTableFormComponent},
+              {path: "create-insurance", component: InsuranceCreateFormComponent},
+              {path: "detail-insurance", component: InsuranceDetailFormComponent},
+              {path: "update-insurance", component: InsuranceUpdateFormComponent},
+              {path: "delete-insurance", component: InsuranceDeleteFormComponent},
+            ]},
+          {path: "history-support", children:[
+              {path:"", component:SupportTableFormComponent},
+              {path: "create-support", component: SupportCreateFormComponent},
+              {path: "detail-support", component: SupportDetailFormComponent},
+              {path: "update-support", component: SupportUpdateFormComponent},
+              {path: "delete-support", component: SupportDeleteFormComponent},
+            ]},
+
+
+        ]},
+
+      // {path:"", component: LoginComponent},
+      // {path:"404", component: Errors404Component},
+      // {path:"500", component: Errors500Component},
+      {path:"home", component: HomeMainComponent, canActivate: [AuthGuard]},
+      {path:"user-detail", component: ProfileMainComponent},
+      {path: "manage-user", component:UserManagerMainComponent},
+      {path: "store-list", component:StoreMainComponent},
+      {path: "area-device", component:DeviceMainComponent},
+      {path: "noti-daily", component:NotiMainComponent},
+      {path: "group-device", component:GroupDeviceMainComponent},
+    ]}
+
 ];
 
 @NgModule({

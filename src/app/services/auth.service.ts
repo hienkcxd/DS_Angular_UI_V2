@@ -52,13 +52,12 @@ export class AuthService {
       });
     }
 
-  isLoggedIn(){
+  isLoggedIn():boolean{
     let httpOptions = {
           headers: new HttpHeaders().set('Authorization', `${localStorage.getItem('access_token')}`),
           responseType: 'text' as 'json'
         };
-        console.log('test access token change: '+ localStorage.getItem('access_token'))
-        return this.httpClient.get(`${this.baseUrl_Login}/api/login-token`, httpOptions)
+        this.httpClient.get(`${this.baseUrl_Login}/api/login-token`, httpOptions)
           .subscribe(data => {
             let dataJson = JSON.parse(data.toString());
             let secret = Object.values(dataJson)[0];
@@ -66,7 +65,6 @@ export class AuthService {
             localStorage.setItem('secret', <string>secret);
             return true;
           }, error=>{
-            alert("Không có quyền truy cập!!!")
             this.router.navigate(['/login'])
           })
     return this.result;

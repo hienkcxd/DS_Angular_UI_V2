@@ -13,12 +13,12 @@ export class AuthGuard implements CanActivate {
   }
   canActivate(){
     if(this.auth.isLoggedIn()){
-        return true
-      }else {
-        // alert("You have not login!!")
-        this.router.navigate(['/login'])
-        return false;
-      }
+      return true
+    }else {
+      alert("Không có quyền truy cập!!!")
+      this.router.navigate(['/login'])
+      return false;
+    }
   }
 
 }
