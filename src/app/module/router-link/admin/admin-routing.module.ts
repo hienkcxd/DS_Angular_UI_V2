@@ -128,9 +128,10 @@ import {HomeMainComponent} from "../../home/home-main/home-main.component";
 import {AuthGuard} from "../../../services/auth.guard";
 import {ProfileMainComponent} from "../../profile/profile-main/profile-main.component";
 import {LayoutMainComponent} from "../../../layout-main/layout-main.component";
+import {AdminLayoutComponent} from "../../../layout-main/admin-layout/admin-layout.component";
 
 const routes: Routes = [
-  {path:"admin", component: LayoutMainComponent, children:[
+  {path:"admin", component: AdminLayoutComponent, children:[
       //-------------------DEVICE--------------------------------//
       {path: "devices", children:[
           {path: "", redirectTo: "group-device", pathMatch: "full"},
@@ -248,14 +249,11 @@ const routes: Routes = [
               {path: "update-support", component: SupportUpdateFormComponent},
               {path: "delete-support", component: SupportDeleteFormComponent},
             ]},
-
-
         ]},
-
+      {path:"home", component: HomeMainComponent},
       // {path:"", component: LoginComponent},
       // {path:"404", component: Errors404Component},
       // {path:"500", component: Errors500Component},
-      {path:"home", component: HomeMainComponent},
     ]}
 ];
 

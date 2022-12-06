@@ -17,6 +17,8 @@ import {LoginModule} from "./module/login/login.module";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {RouterLinkModule} from "./module/router-link/router-link.module";
 import { LayoutMainComponent } from './layout-main/layout-main.component';
+import { AdminLayoutComponent } from './layout-main/admin-layout/admin-layout.component';
+import { UserLayoutComponent } from './layout-main/user-layout/user-layout.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { LayoutMainComponent } from './layout-main/layout-main.component';
     FooterComponent,
     AdminSidebarComponent,
     UserSidebarComponent,
-    LayoutMainComponent
+    LayoutMainComponent,
+    AdminLayoutComponent,
+    UserLayoutComponent
   ],
   imports: [
     BrowserModule,
