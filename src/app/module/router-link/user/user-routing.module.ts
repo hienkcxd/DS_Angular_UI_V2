@@ -127,6 +127,7 @@ import {
 } from "../../reports/history-support/support-delete-form/support-delete-form.component";
 import {HomeMainComponent} from "../../home/home-main/home-main.component";
 import {UserLayoutComponent} from "../../../layout-main/user-layout/user-layout.component";
+import {ProfileMainComponent} from "../../profile/profile-main/profile-main.component";
 
 const routes: Routes = [
   {path:"user", component: UserLayoutComponent, children:[
@@ -163,27 +164,12 @@ const routes: Routes = [
 
       //-------------------SYSTEM--------------------------------//
       {path: "system", children:[
-          {path: "", redirectTo: "manage-user", pathMatch: "full"},
-          {path: "manage-user", children:[
-              {path:"", component:UserManagerMainComponent},
-              {path: "create-user", component: UserCreateFormComponent},
-              {path: "detail-user", component: UserDetailFormComponent},
-              {path: "update-user", component: UserEditFormComponent},
-              {path: "delete-user", component: UserDeleteFormComponent},
-            ]},
           {path: "store-list", children:[
               {path:"", component:StoreMainComponent},
               {path: "create-store", component: StoreListCreateComponent},
               {path: "detail-store", component: StoreListDetailComponent},
               {path: "update-store", component: StoreListEditComponent},
               {path: "delete-store", component: StoreListDeleteComponent},
-            ]},
-          {path: "noti-daily", children:[
-              {path:"", component:NotiMainComponent},
-              {path: "create-noti", component: NotiCreateFormComponent},
-              {path: "detail-noti", component: NotiDetailFormComponent},
-              {path: "update-noti", component: NotiEditFormComponent},
-              {path: "delete-noti", component: NotiDeleteFormComponent},
             ]},
           {path: "area-device", children:[
               {path:"", component:DeviceMainComponent},
@@ -219,20 +205,11 @@ const routes: Routes = [
               {path: "update-videos", component: VideosUpdateFormComponent},
               {path: "delete-videos", component: VideosDeleteFormComponent},
             ]},
-
-
         ]},
 
       //-------------------REPORT--------------------------------//
       {path: "reports", children:[
           {path: "", redirectTo: "history-broadcast", pathMatch: "full"},
-          {path: "history-broadcast", children:[
-              {path:"", component:BroadcastTableFormComponent},
-              {path: "create-broadcast", component: BroadcastCreateFormComponent},
-              {path: "detail-broadcast", component: BroadcastDetailFormComponent},
-              {path: "update-broadcast", component: BroadcastUpdateFormComponent},
-              {path: "delete-broadcast", component: BroadcastDeleteFormComponent},
-            ]},
           {path: "history-insurance", children:[
               {path:"", component:InsuranceTableFormComponent},
               {path: "create-insurance", component: InsuranceCreateFormComponent},
@@ -250,7 +227,9 @@ const routes: Routes = [
 
 
         ]},
-      {path:"home", component: HomeMainComponent}
+      {path:"home", component: HomeMainComponent},
+      {path:"profile", component: ProfileMainComponent},
+      {path:"", component: HomeMainComponent},
     ]},
 ];
 

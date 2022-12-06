@@ -251,9 +251,10 @@ const routes: Routes = [
             ]},
         ]},
       {path:"home", component: HomeMainComponent},
+      {path:"profile", component: ProfileMainComponent},
+      {path:"", component: HomeMainComponent},
       // {path:"", component: LoginComponent},
-      // {path:"404", component: Errors404Component},
-      // {path:"500", component: Errors500Component},
+
     ]}
 ];
 

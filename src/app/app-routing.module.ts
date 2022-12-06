@@ -149,12 +149,15 @@ import {AuthGuard} from "./services/auth.guard";
 import {AppComponent} from "./app.component";
 import * as path from "path";
 import {LayoutMainComponent} from "./layout-main/layout-main.component";
+import {Error404Component} from "./module/error/error404/error404.component";
+import {Error500Component} from "./module/error/error500/error500.component";
 
 
 const routes: Routes = [
   {path:"", component:LoginComponent},
-  {path:"login", component:LoginComponent}
-  //-------------------DEVICE--------------------------------//
+  {path:"login", component:LoginComponent},
+  {path:"404", component: Error404Component},
+  {path:"500", component: Error500Component},
 ];
 
 @NgModule({

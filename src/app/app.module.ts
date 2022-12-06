@@ -19,6 +19,7 @@ import {RouterLinkModule} from "./module/router-link/router-link.module";
 import { LayoutMainComponent } from './layout-main/layout-main.component';
 import { AdminLayoutComponent } from './layout-main/admin-layout/admin-layout.component';
 import { UserLayoutComponent } from './layout-main/user-layout/user-layout.component';
+import {ErrorModule} from "./module/error/error.module";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { UserLayoutComponent } from './layout-main/user-layout/user-layout.compo
     FilesModule,
     AppRoutingModule,
     DevicesModule,
+    ErrorModule,
     RouterLinkModule,
     HttpClientModule,
 
