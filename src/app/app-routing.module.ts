@@ -152,11 +152,10 @@ import {LogginLayoutComponent} from "./loggin-layout/loggin-layout.component";
 
 
 const routes: Routes = [
-  {path:"login", component: LogginLayoutComponent, children:[
-      {path:"", component: LoginComponent}
-    ]},
+  {path:"", component:LoginComponent},
+  {path:"login", component:LoginComponent},
   //-------------------DEVICE--------------------------------//
-  {path:"", component: AppComponent, children:[
+  {path:"", component: LogginLayoutComponent, children:[
       {path: "devices", children:[
           {path: "", redirectTo: "group-device", pathMatch: "full"},
           {path: "group-device", children:[
