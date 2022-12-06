@@ -148,14 +148,15 @@ import {LoginComponent} from "./module/login/login/login.component";
 import {AuthGuard} from "./services/auth.guard";
 import {AppComponent} from "./app.component";
 import * as path from "path";
-import {LogginLayoutComponent} from "./loggin-layout/loggin-layout.component";
+import {LayoutMainComponent} from "./layout-main/layout-main.component";
 
 
 const routes: Routes = [
   {path:"", component:LoginComponent},
   {path:"login", component:LoginComponent},
   //-------------------DEVICE--------------------------------//
-  {path:"", component: LogginLayoutComponent, children:[
+  {path:"user", component: LayoutMainComponent, children:[
+      //-------------------Device--------------------------------//
       {path: "devices", children:[
           {path: "", redirectTo: "group-device", pathMatch: "full"},
           {path: "group-device", children:[
@@ -276,17 +277,7 @@ const routes: Routes = [
 
         ]},
 
-      // {path:"", component: LoginComponent},
-      // {path:"404", component: Errors404Component},
-      // {path:"500", component: Errors500Component},
-      {path:"home", component: HomeMainComponent, canActivate: [AuthGuard]},
-      {path:"user-detail", component: ProfileMainComponent},
-      {path: "manage-user", component:UserManagerMainComponent},
-      {path: "store-list", component:StoreMainComponent},
-      {path: "area-device", component:DeviceMainComponent},
-      {path: "noti-daily", component:NotiMainComponent},
-      {path: "group-device", component:GroupDeviceMainComponent},
-    ]}
+    ]},
 
 ];
 

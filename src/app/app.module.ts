@@ -15,7 +15,8 @@ import {ReportsModule} from "./module/reports/reports.module";
 import {FilesModule} from "./module/files/files.module";
 import {LoginModule} from "./module/login/login.module";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {LogginLayoutComponent} from "./loggin-layout/loggin-layout.component";
+import {RouterLinkModule} from "./module/router-link/router-link.module";
+import { LayoutMainComponent } from './layout-main/layout-main.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import {LogginLayoutComponent} from "./loggin-layout/loggin-layout.component";
     FooterComponent,
     AdminSidebarComponent,
     UserSidebarComponent,
-    LogginLayoutComponent
+    LayoutMainComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +37,7 @@ import {LogginLayoutComponent} from "./loggin-layout/loggin-layout.component";
     FilesModule,
     AppRoutingModule,
     DevicesModule,
+    RouterLinkModule,
     HttpClientModule,
 
   ],
