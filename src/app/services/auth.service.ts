@@ -1,18 +1,19 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams, HttpStatusCode} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "../model/user";
 import {Router} from "@angular/router";
-import jwtDecode, {JwtPayload} from "jwt-decode";
-import {map} from "rxjs";
-import {data} from "jquery";
+import jwtDecode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  constructor(private httpClient: HttpClient, private router: Router) {
+  }
   private baseUrl_Login = "http://localhost:8080";
+
+  result = false
 
   loginUser(user : User){
     let httpOptions = {
@@ -22,13 +23,12 @@ export class AuthService {
     let body = new URLSearchParams();
     body.set('username', user.username);
     body.set('password', user.password);
-    const params = new HttpHeaders()
-      .set('username', user.username)
-      .set('password', user.password);
+
     return this.httpClient.post(`${this.baseUrl_Login}/api/login`, body.toString(), httpOptions).subscribe(data=>{
         let token = JSON.parse(data.toString());
         let access_token = Object.values(token)[0];
         let refresh_token = Object.values(token)[1];
+        this.result = true;
         if (typeof access_token === "string" && typeof refresh_token === "string") {
           console.log('role: '+Object.values(jwtDecode<object>(access_token))[1])
           localStorage.setItem('access_token', access_token);
@@ -38,7 +38,7 @@ export class AuthService {
         alert("success");
       if(this.isRoleAdmin()){
         console.log("vao role admin")
-        this.router.navigate(['/admin/home'])
+        this.router.navigate(['/home'])
       }else if(this.isRoleUser()){
         console.log("vao role user")
         this.router.navigate(['/home'])
@@ -52,19 +52,25 @@ export class AuthService {
       });
     }
 
-    isLoggedIn(){
-      let httpOptions = {
-        headers: new HttpHeaders().set('Authorization',`${localStorage.getItem('access_token')}`),
-        responseType: 'text' as 'json'
-      };
-      let status = this.httpClient.get<object>(`${this.baseUrl_Login}/api/login-token`,httpOptions).subscribe(data=>{
-
-      }, error => {
-        return false;
-      })
-      console.log(Object.values(status)[0])
-      return true;
-    }
+  isLoggedIn(){
+    let httpOptions = {
+          headers: new HttpHeaders().set('Authorization', `${localStorage.getItem('access_token')}`),
+          responseType: 'text' as 'json'
+        };
+        console.log('test access token change: '+ localStorage.getItem('access_token'))
+        return this.httpClient.get(`${this.baseUrl_Login}/api/login-token`, httpOptions)
+          .subscribe(data => {
+            let dataJson = JSON.parse(data.toString());
+            let secret = Object.values(dataJson)[0];
+            this.result = true;
+            localStorage.setItem('secret', <string>secret);
+            return true;
+          }, error=>{
+            alert("Không có quyền truy cập!!!")
+            this.router.navigate(['/login'])
+          })
+    return this.result;
+  }
 
 
     isRoleAdmin(){
