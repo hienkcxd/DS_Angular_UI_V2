@@ -127,11 +127,15 @@ import {
 import {HomeMainComponent} from "../../home/home-main/home-main.component";
 import {AuthGuard} from "../../../services/auth.guard";
 import {ProfileMainComponent} from "../../profile/profile-main/profile-main.component";
-import {LayoutMainComponent} from "../../../layout-main/layout-main.component";
 import {AdminLayoutComponent} from "../../../layout-main/admin-layout/admin-layout.component";
+import {RoleAdminGuard} from "../../../services/role-admin.guard";
 
 const routes: Routes = [
-  {path:"admin", component: AdminLayoutComponent, children:[
+  {path:"admin",
+    component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
+    canActivateChild:[RoleAdminGuard],
+    children:[
       //-------------------DEVICE--------------------------------//
       {path: "devices", children:[
           {path: "", redirectTo: "group-device", pathMatch: "full"},

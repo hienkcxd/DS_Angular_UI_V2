@@ -13,7 +13,7 @@ export class AuthService {
   }
   private baseUrl_Login = "http://localhost:8080";
 
-  result = false
+  result:boolean = false;
 
   loginUser(user : User){
     let httpOptions = {
@@ -38,10 +38,10 @@ export class AuthService {
         alert("success");
       if(this.isRoleAdmin()){
         console.log("vao role admin")
-        this.router.navigate(['/home'])
+        this.router.navigate(['/admin/home'])
       }else if(this.isRoleUser()){
         console.log("vao role user")
-        this.router.navigate(['/home'])
+        this.router.navigate(['/user/home'])
       }else {
         console.log(this.isRoleAdmin())
         this.router.navigate(['/login'])
@@ -63,13 +63,22 @@ export class AuthService {
             let secret = Object.values(dataJson)[0];
             this.result = true;
             localStorage.setItem('secret', <string>secret);
-            return true;
           }, error=>{
+            alert('Vui Lòng Đăng Nhập Lại!!!')
+            localStorage.removeItem('secret')
             this.router.navigate(['/login'])
-          })
-    return this.result;
+          });
+    if(localStorage.getItem('secret')=='2689367B205C16CE32ED4200942B8B8B1E262DFC70D9BC9FBC77C49699A4F1DF'){
+      return true;
+    }else {
+      return false;
+    }
   }
 
+  logout():boolean{
+    this.result=false
+    return this.result;
+  }
 
     isRoleAdmin(){
       let tokenCur = localStorage.getItem('access_token');

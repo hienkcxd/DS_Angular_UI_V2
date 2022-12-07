@@ -16,6 +16,7 @@ export class AuthGuard implements CanActivate {
       return true
     }else {
       alert("Không có quyền truy cập!!!")
+      localStorage.removeItem('access_token')
       this.router.navigate(['/login'])
       return false;
     }

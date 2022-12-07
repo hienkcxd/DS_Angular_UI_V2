@@ -37,21 +37,11 @@ import {
 import {
   OperatorHistoryUpdateComponent
 } from "../../devices/operator-history/operator-history-update/operator-history-update.component";
-import {UserManagerMainComponent} from "../../system/user-manager/user-manager-main/user-manager-main.component";
-import {UserCreateFormComponent} from "../../system/user-manager/user-create-form/user-create-form.component";
-import {UserDetailFormComponent} from "../../system/user-manager/user-detail-form/user-detail-form.component";
-import {UserEditFormComponent} from "../../system/user-manager/user-edit-form/user-edit-form.component";
-import {UserDeleteFormComponent} from "../../system/user-manager/user-delete-form/user-delete-form.component";
 import {StoreMainComponent} from "../../system/store-list/store-main/store-main.component";
 import {StoreListCreateComponent} from "../../system/store-list/store-list-create/store-list-create.component";
 import {StoreListDetailComponent} from "../../system/store-list/store-list-detail/store-list-detail.component";
 import {StoreListEditComponent} from "../../system/store-list/store-list-edit/store-list-edit.component";
 import {StoreListDeleteComponent} from "../../system/store-list/store-list-delete/store-list-delete.component";
-import {NotiMainComponent} from "../../system/noti-daily/noti-main/noti-main.component";
-import {NotiCreateFormComponent} from "../../system/noti-daily/noti-create-form/noti-create-form.component";
-import {NotiDetailFormComponent} from "../../system/noti-daily/noti-detail-form/noti-detail-form.component";
-import {NotiEditFormComponent} from "../../system/noti-daily/noti-edit-form/noti-edit-form.component";
-import {NotiDeleteFormComponent} from "../../system/noti-daily/noti-delete-form/noti-delete-form.component";
 import {DeviceMainComponent} from "../../system/device-area/device-main/device-main.component";
 import {DeviceCreateFormComponent} from "../../system/device-area/device-create-form/device-create-form.component";
 import {DeviceDetailFormComponent} from "../../system/device-area/device-detail-form/device-detail-form.component";
@@ -82,21 +72,7 @@ import {VideosCreateFormComponent} from "../../files/videos/videos-create-form/v
 import {VideosDetailFormComponent} from "../../files/videos/videos-detail-form/videos-detail-form.component";
 import {VideosUpdateFormComponent} from "../../files/videos/videos-update-form/videos-update-form.component";
 import {VideosDeleteFormComponent} from "../../files/videos/videos-delete-form/videos-delete-form.component";
-import {
-  BroadcastTableFormComponent
-} from "../../reports/history-broadcast/broadcast-table-form/broadcast-table-form.component";
-import {
-  BroadcastCreateFormComponent
-} from "../../reports/history-broadcast/broadcast-create-form/broadcast-create-form.component";
-import {
-  BroadcastDetailFormComponent
-} from "../../reports/history-broadcast/broadcast-detail-form/broadcast-detail-form.component";
-import {
-  BroadcastUpdateFormComponent
-} from "../../reports/history-broadcast/broadcast-update-form/broadcast-update-form.component";
-import {
-  BroadcastDeleteFormComponent
-} from "../../reports/history-broadcast/broadcast-delete-form/broadcast-delete-form.component";
+
 import {
   InsuranceTableFormComponent
 } from "../../reports/history-insurance/insurance-table-form/insurance-table-form.component";
@@ -128,9 +104,16 @@ import {
 import {HomeMainComponent} from "../../home/home-main/home-main.component";
 import {UserLayoutComponent} from "../../../layout-main/user-layout/user-layout.component";
 import {ProfileMainComponent} from "../../profile/profile-main/profile-main.component";
+import {AuthGuard} from "../../../services/auth.guard";
+import {RoleAdminGuard} from "../../../services/role-admin.guard";
+import {RoleUserGuard} from "../../../services/role-user.guard";
 
 const routes: Routes = [
-  {path:"user", component: UserLayoutComponent, children:[
+  {path:"user",
+    component: UserLayoutComponent,
+    canActivate: [AuthGuard],
+    canActivateChild:[RoleUserGuard],
+    children:[
       //-------------------Device--------------------------------//
       {path: "devices", children:[
           {path: "", redirectTo: "group-device", pathMatch: "full"},
