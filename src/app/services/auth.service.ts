@@ -67,7 +67,7 @@ export class AuthService {
             this.result = true;
             localStorage.setItem('secret', <string>secret);
           }, error=>{
-            alert('token sai - Vui Lòng Đăng Nhập Lại!!!')
+            // alert('token sai - Vui Lòng Đăng Nhập Lại!!!')
             localStorage.removeItem("access_token");
             localStorage.removeItem("refresh_token");
             localStorage.removeItem("is_logout");
