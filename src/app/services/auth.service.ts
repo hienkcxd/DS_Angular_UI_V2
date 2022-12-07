@@ -68,10 +68,15 @@ export class AuthService {
             localStorage.setItem('secret', <string>secret);
           }, error=>{
             alert('token sai - Vui Lòng Đăng Nhập Lại!!!')
-            localStorage.removeItem('secret')
+            localStorage.removeItem("access_token");
+            localStorage.removeItem("refresh_token");
+            localStorage.removeItem("is_logout");
+            localStorage.removeItem("secret");
+            localStorage.removeItem("role");
             this.router.navigate(['/login'])
           });
-    if(localStorage.getItem('secret')=='2689367B205C16CE32ED4200942B8B8B1E262DFC70D9BC9FBC77C49699A4F1DF'){
+    //    localStorage.getItem('secret')=='2689367B205C16CE32ED4200942B8B8B1E262DFC70D9BC9FBC77C49699A4F1DF'
+    if(localStorage.getItem('access_token')){
       localStorage.setItem('is_logout', 'false')
       return true;
     }else {

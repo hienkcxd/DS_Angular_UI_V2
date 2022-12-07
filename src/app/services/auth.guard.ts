@@ -13,9 +13,9 @@ export class AuthGuard implements CanActivate {
   }
   canActivate(){
     if(this.auth.isLoggedIn()){
-      return true
+        return true;
     }else {
-      alert("auth guard - Không có quyền truy cập!!!")
+      alert("authGuard - Vui lòng đăng nhập trước khi sử dụng!!!")
       this.router.navigate(['/login'])
       return false;
     }
