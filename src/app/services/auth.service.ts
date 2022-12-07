@@ -31,10 +31,13 @@ export class AuthService {
         this.result = true;
         if (typeof access_token === "string" && typeof refresh_token === "string") {
           console.log('role: '+Object.values(jwtDecode<object>(access_token))[1])
+          localStorage.setItem('role', Object.values(jwtDecode<object>(access_token))[1]);
           localStorage.setItem('access_token', access_token);
           localStorage.setItem('refresh_token', refresh_token);
         }
+        localStorage.setItem('is_logout', 'false')
         console.log(localStorage.getItem('access_token'))
+        this.isLoggedIn()
         alert("success");
       if(this.isRoleAdmin()){
         console.log("vao role admin")
@@ -64,20 +67,24 @@ export class AuthService {
             this.result = true;
             localStorage.setItem('secret', <string>secret);
           }, error=>{
-            alert('Vui Lòng Đăng Nhập Lại!!!')
+            alert('token sai - Vui Lòng Đăng Nhập Lại!!!')
             localStorage.removeItem('secret')
             this.router.navigate(['/login'])
           });
     if(localStorage.getItem('secret')=='2689367B205C16CE32ED4200942B8B8B1E262DFC70D9BC9FBC77C49699A4F1DF'){
+      localStorage.setItem('is_logout', 'false')
       return true;
     }else {
       return false;
     }
   }
 
-  logout():boolean{
-    this.result=false
-    return this.result;
+  isLogout():boolean{
+    if(localStorage.getItem('is_logout')=='false'){
+      return false;
+    }else {
+      return true;
+    }
   }
 
     isRoleAdmin(){

@@ -13,8 +13,8 @@ export class RoleUserGuard implements CanActivateChild {
     if(this.auth.isRoleUser()){
       return true;
     }else {
-      alert('user guard - không có quyền vào trang này')
-      this.router.navigate(['/admin/home'])
+      alert('user guard - Đây không phải tài khoản user!!!')
+      this.router.navigate(['/404']);
       return false;
     }
   }

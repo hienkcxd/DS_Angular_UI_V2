@@ -13,8 +13,8 @@ export class RoleAdminGuard implements CanActivateChild {
     if(this.auth.isRoleAdmin()){
       return true;
     }else {
-      alert('admin guard - không có quyền vào trang này')
-      this.router.navigate(['/user/home'])
+      alert('admin guard - Đây không phải tài khoản admin!!!')
+      this.router.navigate(['/404'])
       return false;
     }
   }

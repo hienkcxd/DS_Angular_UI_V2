@@ -2,21 +2,25 @@ import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import { Observable } from 'rxjs';
 import {AuthService} from "./auth.service";
-import {data} from "jquery";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
-  demo!:string;
+export class LogoutGuard implements CanActivate {
   constructor(private auth : AuthService, private router:Router) {
   }
   canActivate(){
-    if(this.auth.isLoggedIn()){
-      return true
+    let url = '';
+    if(localStorage.getItem('role')=='ROLE_USER'){
+      url = '/user/home';
+    }else if(localStorage.getItem('role')=='ROLE_ADMIN'){
+      url = '/admin/home';
+    }
+    console.log('loggout router lúc này - '+url)
+    if(this.auth.isLogout()){
+      return true;
     }else {
-      alert("auth guard - Không có quyền truy cập!!!")
-      this.router.navigate(['/login'])
+      this.router.navigate([url])
       return false;
     }
   }
