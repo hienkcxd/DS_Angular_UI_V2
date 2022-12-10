@@ -5,10 +5,10 @@ import { StoreListCreateComponent } from './store-list-create/store-list-create.
 import { StoreListDetailComponent } from './store-list-detail/store-list-detail.component';
 import { StoreListDeleteComponent } from './store-list-delete/store-list-delete.component';
 import { StoreListEditComponent } from './store-list-edit/store-list-edit.component';
-import {BrowserModule} from "@angular/platform-browser";
 import {DataTablesModule} from "angular-datatables";
 import {RouterLinkWithHref} from "@angular/router";
-import {htmlPrefilter} from "jquery";
+import {AppRoutingModule} from "../../../app-routing.module";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -24,8 +24,10 @@ import {htmlPrefilter} from "jquery";
   ],
   imports: [
     CommonModule,
+    AppRoutingModule,
     RouterLinkWithHref,
     DataTablesModule,
+    FormsModule,
   ]
 })
 export class StoreListModule { }
