@@ -18,8 +18,8 @@ export class StoreMainComponent implements OnInit, OnDestroy  {
 
   fetchStore():void{
     this.storeService.getUserStore()
-      .subscribe((response: any)=>{
-      this.listStore = response;
+      .subscribe(data=>{
+      this.listStore = data;
       this.dtTrigger.next(false);
     })
   }
