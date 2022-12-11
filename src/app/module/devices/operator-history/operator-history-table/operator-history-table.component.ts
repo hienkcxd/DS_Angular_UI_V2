@@ -1,48 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subject} from "rxjs";
+import {DeviceLog} from "../../../../model/device/device-log.model";
+import {DeviceLogService} from "../../../../services/Api/device/device-log.service";
 
 @Component({
   selector: 'app-operator-history-table',
   templateUrl: './operator-history-table.component.html',
   styleUrls: ['./operator-history-table.component.scss']
 })
-export class OperatorHistoryTableComponent implements OnInit {
+export class OperatorHistoryTableComponent implements OnInit,OnDestroy {
 
-  constructor() { }
+  constructor(private deviceLogService:DeviceLogService) { }
+  dtTrigger: Subject<any> = new Subject<any>();
+  deviceLogList !:DeviceLog[];
   dtOptions: any = {};
+
+  fetchDeviceLog(){
+    this.deviceLogService.getAllDeviceLog().subscribe(data=>{
+      this.deviceLogList=data;
+      this.dtTrigger.next(false)
+    })
+  }
+
   ngOnInit(): void {
+    this.fetchDeviceLog();
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 7,
-      lengthMenu: [7, 10, 15],
-      // Declare the use of the extension in the dom parameter
       dom: 'Blfrtip',
-      // Configure the buttons
       buttons: [
-        'excel',
+        'excels'
       ],
-      columns: [
-        {
-          title: 'ID',
-          data: 'col1'
-        },
-        {
-          title: 'Tên thiết Bị',
-          data: 'col2'
-        },
-        {
-          title: 'Id thiết bị',
-          data: 'col3'
-        },
-        {
-          title: 'Trạng thái hoạt đông',
-          data: 'col4'
-        },
-        {
-          title: 'Chức năng',
-          data: 'col5'
-        }
-      ],
+      pageLength: 7,
+      lengthMenu: [1,2,3,4,5,6,7],
     }
+  }
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
   }
 
 }

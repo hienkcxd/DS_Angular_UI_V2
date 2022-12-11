@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Subject} from "rxjs";
+import {PlaylistService} from "../../../../services/Api/file/playlist.service";
+import {Playlist} from "../../../../model/file/playlist.model";
+import {data} from "jquery";
 
 @Component({
   selector: 'app-playlist-table-form',
@@ -7,43 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistTableFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private playListService:PlaylistService) { }
+  dtTrigger: Subject<any> = new Subject<any>();
   dtOptions: any = {};
+  listPlayList !: Playlist[];
+  fetchPlayList(){
+    this.playListService.getAllPlayList().subscribe(data=>{
+      this.listPlayList = data;
+      this.dtTrigger.next(false);
+    })
+  }
   ngOnInit(): void {
+    this.fetchPlayList();
     this.dtOptions = {
       pagingType: 'full_numbers',
+      dom: 'Blfrtip',
+      buttons: [
+        'excels'
+      ],
       pageLength: 7,
       lengthMenu: [1,2,3,4,5,6,7],
-      // Declare the use of the extension in the dom parameter
-      dom: 'Blfrtip',
-      // Configure the buttons
-      buttons: [
-        'excel',
-      ],
-      columns: [
-        {
-          title: 'id',
-          data: 'id'
-        },
-        {
-          title: 'name',
-          data: 'name'
-        },
-        {
-          title: 'email',
-          data: 'email'
-        },
-        {
-          title: 'phone',
-          data: 'phone'
-        },
-        {
-          title: 'action',
-          data: 'action'
-        }
-      ],
     }
   }
-
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
 }
 

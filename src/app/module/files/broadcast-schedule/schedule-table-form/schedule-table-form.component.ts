@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ScheduleService} from "../../../../services/Api/file/schedule.service";
+import {Subject} from "rxjs";
+import {Schedule} from "../../../../model/file/schedule.model";
+import {data} from "jquery";
 
 @Component({
   selector: 'app-schedule-table-form',
@@ -7,42 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScheduleTableFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private scheduleService:ScheduleService) { }
+  dtTrigger: Subject<any> = new Subject<any>();
+  scheduleList!:Schedule[];
   dtOptions: any = {};
+  fetchSchedule(){
+    this,this.scheduleService.getAllSchedule().subscribe(data=>{
+      this.scheduleList = data;
+      this.dtTrigger.next(false);
+    })
+  }
   ngOnInit(): void {
+    this.fetchSchedule();
     this.dtOptions = {
       pagingType: 'full_numbers',
+      dom: 'Blfrtip',
+      buttons: [
+        'excels'
+      ],
       pageLength: 7,
       lengthMenu: [1,2,3,4,5,6,7],
-      // Declare the use of the extension in the dom parameter
-      dom: 'Blfrtip',
-      // Configure the buttons
-      buttons: [
-        'excel',
-      ],
-      columns: [
-        {
-          title: 'id',
-          data: 'id'
-        },
-        {
-          title: 'name',
-          data: 'name'
-        },
-        {
-          title: 'email',
-          data: 'email'
-        },
-        {
-          title: 'phone',
-          data: 'phone'
-        },
-        {
-          title: 'action',
-          data: 'action'
-        }
-      ],
     }
-  }
 
+  }
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
 }

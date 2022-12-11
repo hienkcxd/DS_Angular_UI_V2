@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Store} from "../../../../model/system/store.model";
-import {StoreService} from "../../../../services/Api/device/store.service";
+import {StoreService} from "../../../../services/Api/system/store.service";
 import {Subject} from "rxjs";
 import {DataTableDirective} from "angular-datatables";
 
@@ -19,9 +19,9 @@ export class StoreMainComponent implements OnInit, OnDestroy  {
   fetchStore():void{
     this.storeService.getUserStore()
       .subscribe(data=>{
-      this.listStore = data;
-      this.dtTrigger.next(false);
-    })
+        this.listStore = data;
+        this.dtTrigger.next(false);
+      })
   }
 
   @ViewChild(DataTableDirective, {static: false})
@@ -31,15 +31,15 @@ export class StoreMainComponent implements OnInit, OnDestroy  {
 
   ngOnInit(): void {
     this.fetchStore();
-this.dtOptions = {
-  pagingType: 'full_numbers',
-  dom: 'Blfrtip',
-  buttons: [
-    'excels'
-  ],
-  pageLength: 7,
-  lengthMenu: [1,2,3,4,5,6,7],
-}
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      dom: 'Blfrtip',
+      buttons: [
+        'excels'
+      ],
+      pageLength: 7,
+      lengthMenu: [1,2,3,4,5,6,7],
+    }
   }
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();

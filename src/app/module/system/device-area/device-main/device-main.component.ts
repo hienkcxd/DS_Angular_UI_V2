@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Subject} from "rxjs";
+import {Area} from "../../../../model/system/area.model";
+import {AreaService} from "../../../../services/Api/system/area.service";
 
 @Component({
   selector: 'app-device-main',
@@ -7,42 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeviceMainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private areaService:AreaService) {
+  }
+  dtTrigger: Subject<any> = new Subject<any>();
   dtOptions: any = {};
+  listArea!: Area[];
+  fetchArea(){
+    this.areaService.getArea().subscribe(data=>{
+      this.listArea = data;
+      this.dtTrigger.next(false);
+    });
+  }
   ngOnInit(): void {
+    this.fetchArea();
     this.dtOptions = {
       pagingType: 'full_numbers',
+      dom: 'Blfrtip',
+      buttons: [
+        'excels'
+      ],
       pageLength: 7,
       lengthMenu: [1,2,3,4,5,6,7],
-      // Declare the use of the extension in the dom parameter
-      dom: 'Blfrtip',
-      // Configure the buttons
-      buttons: [
-        'excel',
-      ],
-      columns: [
-        {
-          title: 'id',
-          data: 'id'
-        },
-        {
-          title: 'name',
-          data: 'name'
-        },
-        {
-          title: 'email',
-          data: 'email'
-        },
-        {
-          title: 'phone',
-          data: 'phone'
-        },
-        {
-          title: 'action',
-          data: 'action'
-        }
-      ],
     }
   }
-
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
 }

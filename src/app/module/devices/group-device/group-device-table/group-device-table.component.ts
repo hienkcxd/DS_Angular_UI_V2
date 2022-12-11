@@ -1,48 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subject} from "rxjs";
+import {DeviceGroup} from "../../../../model/device/device-group.model";
+import {DeviceGroupService} from "../../../../services/Api/device/device-group.service";
 
 @Component({
   selector: 'app-group-device-table',
   templateUrl: './group-device-table.component.html',
   styleUrls: ['./group-device-table.component.scss']
 })
-export class GroupDeviceTableComponent implements OnInit {
+export class GroupDeviceTableComponent implements OnInit,OnDestroy {
 
-  constructor() { }
+  constructor(private deviceGroupService:DeviceGroupService) { }
+  dtTrigger: Subject<any> = new Subject<any>();
+  deviceGroupList !:DeviceGroup[];
   dtOptions: any = {};
+
+  fetchDeviceGroup(){
+    this.deviceGroupService.getAllDeviceGroup().subscribe(data=>{
+      this.deviceGroupList=data;
+      this.dtTrigger.next(false)
+    })
+  }
   ngOnInit(): void {
+    this.fetchDeviceGroup();
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 7,
-      lengthMenu: [7, 10, 15],
-      // Declare the use of the extension in the dom parameter
       dom: 'Blfrtip',
-      // Configure the buttons
       buttons: [
-        'excel',
+        'excels'
       ],
-      columns: [
-        {
-          title: 'ID',
-          data: 'col1'
-        },
-        {
-          title: 'Tên thiết Bị',
-          data: 'col2'
-        },
-        {
-          title: 'Id thiết bị',
-          data: 'col3'
-        },
-        {
-          title: 'Trạng thái hoạt đông',
-          data: 'col4'
-        },
-        {
-          title: 'Chức năng',
-          data: 'col5'
-        }
-      ],
+      pageLength: 7,
+      lengthMenu: [1,2,3,4,5,6,7],
     }
   }
 
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
 }

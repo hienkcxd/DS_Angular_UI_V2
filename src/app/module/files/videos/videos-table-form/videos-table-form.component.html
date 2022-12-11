@@ -12,27 +12,30 @@
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table datatable class="table table-striped table-hover"[dtOptions]="dtOptions" tabindex="0" id="tableExport"  style="width:100%;" >
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" tabindex="0" id="tableExport" class="table table-striped table-hover" style="width:100%;" >
               <thead>
               <tr>
-                <th>Seri No</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Mail</th>
+                <th>id</th>
+                <th>File Name</th>
                 <th>Username</th>
+                <th>File Type</th>
+                <th>Create Date</th>
+                <th>Url</th>
+                <th>Action</th>
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td>thu</td>
-                <td>thuhtu</td>
-                <td>thu@gmail</td>
-                <td> 123456789</td>
+              <tr *ngFor="let file of listFile">
+                <td>{{file.id}}</td>
+                <td>{{file.fileName}}</td>
+                <td>{{file.username}}</td>
+                <td>{{file.fileType}}</td>
+                <td>{{file.createDate}}</td>
+                <td>{{file.urlGoogleDrive}}</td>
                 <td class="row justify-content-center">
                   <a routerLink="detail-videos" title="Detail broadcast" class="btn btn-primary btn-action mr-1 "><i class="fas fa-info-circle"></i></a>
                   <a routerLink="update-videos" title="Update broadcast" class="btn btn-primary btn-action mr-1"><i class="fas fa-pencil-alt"></i></a>
                   <a routerLink="delete-videos" title="Delete broadcast" class="btn btn-danger btn-action"><i class="fas fa-trash"></i></a>
-
                 </td>
               </tr>
               </tbody>
