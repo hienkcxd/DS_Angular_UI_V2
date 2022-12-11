@@ -2,22 +2,32 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Store} from "../../../model/system/store.model";
+import {AuthService} from "../../auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class StoreService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private auth:AuthService) {
+
+  }
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':'application/json',
       'Authorization':`${localStorage.getItem('access_token')}`,
     }),
   }
-  baseUrl = "http://localhost:8080";
+  baseUrl(){
+    if(this.auth.isRoleUser()){
+      return "http://localhost:8080/api/user";
+    }
+    else {
+      return "http://localhost:8080/api/admin";
+    }
+  }
 
   getUserStore():Observable<any>{
-    return this.http.get(`${this.baseUrl}/api/user/store`,{headers: this.httpOptions.headers});
+      return this.http.get(`${this.baseUrl()}/store`,{headers: this.httpOptions.headers});
   }
 }

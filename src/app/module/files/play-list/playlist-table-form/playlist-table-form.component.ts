@@ -27,7 +27,7 @@ export class PlaylistTableFormComponent implements OnInit {
       pagingType: 'full_numbers',
       dom: 'Blfrtip',
       buttons: [
-        'excels'
+        'excel'
       ],
       pageLength: 7,
       lengthMenu: [1,2,3,4,5,6,7],
