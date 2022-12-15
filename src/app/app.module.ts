@@ -20,6 +20,7 @@ import { LayoutMainComponent } from './layout-main/layout-main.component';
 import { AdminLayoutComponent } from './layout-main/admin-layout/admin-layout.component';
 import { UserLayoutComponent } from './layout-main/user-layout/user-layout.component';
 import {ErrorModule} from "./module/error/error.module";
+import {ProfileModule} from "./module/profile/profile.module";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {ErrorModule} from "./module/error/error.module";
     DataTablesModule,
     HomeModule,
     LoginModule,
+    ProfileModule,
     SystemModule,
     ReportsModule,
     FilesModule,
