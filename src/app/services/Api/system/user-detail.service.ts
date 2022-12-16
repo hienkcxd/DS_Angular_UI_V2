@@ -14,6 +14,7 @@ export class UserDetailService {
   constructor(private http:HttpClient, private auth:AuthService, private router: Router) {
 
   }
+  private baseUrl_ChangePassword = "http://localhost:8080";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':'application/json',
@@ -35,15 +36,26 @@ export class UserDetailService {
 
   changePassword(user:User){
     let httpOptions = {
-      headers: new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded',),
-      'Authorization':`${localStorage.getItem('access_token')}`,
-      responseType: 'text' as 'json'
-    };
+      headers: new HttpHeaders({
+        'Content-Type':'application/x-www-form-urlencoded',
+        'Authorization':`${localStorage.getItem('access_token')}`,
+      }),
+    }
     let body = new URLSearchParams();
-    body.set('current-password', user.password);
-    body.set('new-password', user.newPassword);
-
-    alert('gui du loieu')
-    return this.http.post(`http://localhost:8080/api/change-password`, body.toString(), httpOptions);
+    body.set('newPassword', user.newPassword.toString());
+    alert("new password is: "+user.newPassword)
+    return this.http.post(`${this.baseUrl_ChangePassword}/api/change-password`,
+      body,
+      {headers: httpOptions.headers})
+      .subscribe(data=>{
+      alert("thay doi mat khau thanh cong, vui long dang nhap lai")
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("refresh_token");
+      localStorage.removeItem("is_logout");
+      localStorage.removeItem("role");
+      this.router.navigate(["login"])
+    },error=>{
+      alert("khong duoc de trong")
+    });;
   }
 }

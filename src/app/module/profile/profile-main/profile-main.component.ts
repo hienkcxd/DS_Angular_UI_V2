@@ -3,6 +3,7 @@ import {UserDetailService} from "../../../services/Api/system/user-detail.servic
 import {UserDetail} from "../../../model/system/user-detail.model";
 import {data} from "jquery";
 import {User} from "../../../model/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile-main',
@@ -11,9 +12,10 @@ import {User} from "../../../model/user";
 })
 export class ProfileMainComponent implements OnInit {
 
-  constructor(private userDetailService:UserDetailService) { }
+  constructor(private userDetailService:UserDetailService, private route:Router) { }
   userDetail!:UserDetail;
-  public user:User = new User();
+  user:User = new User();
+
   role!:string;
   fetchUserDetail(){
     this.userDetailService.getUserDetail().subscribe(data=>{
@@ -30,6 +32,6 @@ export class ProfileMainComponent implements OnInit {
   }
 
   changePassword() {
-    this.userDetailService.changePassword(this.user);
+    this.userDetailService.changePassword(this.user)
   }
 }
