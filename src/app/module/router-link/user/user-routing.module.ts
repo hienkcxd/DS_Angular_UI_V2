@@ -150,8 +150,8 @@ const routes: Routes = [
           {path: "store-list", children:[
               {path:"", component:StoreMainComponent},
               {path: "create-store", component: StoreListCreateComponent},
-              {path: "detail-store", component: StoreListDetailComponent},
-              {path: "update-store", component: StoreListEditComponent},
+              {path: "detail-store/{id}", component: StoreListDetailComponent},
+              {path: "update-store/{id}", component: StoreListEditComponent},
               {path: "delete-store", component: StoreListDeleteComponent},
             ]},
           {path: "area-device", children:[
