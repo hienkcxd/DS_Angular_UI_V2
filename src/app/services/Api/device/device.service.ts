@@ -27,4 +27,5 @@ export class DeviceService {
   getAllDevice():Observable<any>{
       return this.http.get(`${this.baseUrl()}/device`,{headers: this.httpOptions.headers});
   }
+
 }

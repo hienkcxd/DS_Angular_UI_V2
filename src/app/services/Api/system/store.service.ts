@@ -30,4 +30,32 @@ export class StoreService {
   getUserStore():Observable<any>{
       return this.http.get(`${this.baseUrl()}/store`,{headers: this.httpOptions.headers});
   }
+  getDetailStore(storeId:string):Observable<any>{
+    return this.http.get(`${this.baseUrl()}/store/storeid=${storeId}`,{headers: this.httpOptions.headers});
+  }
+
+  updateStore(store:Store):Observable<any>{
+    const transferObject = {
+      id: store.id,
+      storeName: store.storeName,
+    }
+    const object = JSON.stringify(transferObject);
+    console.log("json send api"+object)
+    return this.http.put(`${this.baseUrl()}/store`,object,{headers: this.httpOptions.headers});
+  }
+
+  addStore(store:Store):Observable<any>{
+    const transferObject = {
+      id: null,
+      storeName: store.storeName,
+      username: store.username
+    }
+    const object = JSON.stringify(transferObject);
+    console.log("json send api"+object)
+    return this.http.post(`${this.baseUrl()}/store`,object,{headers: this.httpOptions.headers});
+  }
+
+  deleteStore(storeId:string):Observable<any>{
+    return this.http.delete(`${this.baseUrl()}/store/deleteId=${storeId}`,{headers: this.httpOptions.headers});
+  }
 }
