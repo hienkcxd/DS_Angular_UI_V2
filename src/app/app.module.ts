@@ -47,7 +47,6 @@ import {ProfileModule} from "./module/profile/profile.module";
     ErrorModule,
     RouterLinkModule,
     HttpClientModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]

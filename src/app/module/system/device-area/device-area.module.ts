@@ -7,6 +7,7 @@ import { DeviceEditFormComponent } from './device-edit-form/device-edit-form.com
 import { DeviceDetailFormComponent } from './device-detail-form/device-detail-form.component';
 import { DeviceDeleteFormComponent } from './device-delete-form/device-delete-form.component';
 import {DataTablesModule} from "angular-datatables";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -24,7 +25,7 @@ import {DataTablesModule} from "angular-datatables";
     CommonModule,
     RouterLinkWithHref,
     DataTablesModule,
-
+    FormsModule
   ]
 })
 export class DeviceAreaModule { }

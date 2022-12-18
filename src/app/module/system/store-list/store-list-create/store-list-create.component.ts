@@ -11,7 +11,7 @@ import {data, error} from "jquery";
 })
 export class StoreListCreateComponent implements OnInit {
 
-  constructor(private storeService:StoreService, private activatedRoute:ActivatedRoute, private route:Router) { }
+  constructor(private storeService:StoreService, private route:Router) { }
   storeDetail:Store = new class implements Store {
     id!: string;
     storeName!: string;
