@@ -56,7 +56,6 @@ export class StoreMainComponent implements OnInit, OnDestroy  {
         alert("không có quyền xóa!!!")
       });
     }else{
-      alert("ban khong muon xoa nua")
     }
   }
 }

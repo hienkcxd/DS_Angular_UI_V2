@@ -33,7 +33,11 @@ export class StoreListEditComponent implements OnInit {
     console.log(this.storeDetail)
     this.storeService.updateStore(this.storeDetail).subscribe(data=>{
       alert("thay đổi thành công")
-      this.route.navigate(['/user/system/store-list'])
+      if(localStorage.getItem('role')=='ROLE_USER'){
+        this.route.navigate(['/user/system/store-list'])
+      }else {
+        this.route.navigate(['/admin/system/store-list'])
+      }
     },error => {
       alert("thay doi that bai")
     })

@@ -7,6 +7,7 @@ import { VideosTableFormComponent } from './videos-table-form/videos-table-form.
 import { VideosCreateFormComponent } from './videos-create-form/videos-create-form.component';
 import { VideosUpdateFormComponent } from './videos-update-form/videos-update-form.component';
 import { VideosDetailFormComponent } from './videos-detail-form/videos-detail-form.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -22,6 +23,7 @@ import { VideosDetailFormComponent } from './videos-detail-form/videos-detail-fo
     CommonModule,
     RouterLinkWithHref,
     DataTablesModule,
+    FormsModule
   ]
 })
 export class VideosModule { }

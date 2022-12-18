@@ -22,9 +22,8 @@
             <td>{{deviceGroup.groupName}}</td>
             <td>{{deviceGroup.username}}</td>
             <td class="row justify-content-center">
-              <a routerLink="detail-device" title="Detail Device" class="btn btn-primary btn-action mr-1 "><i class="fas fa-info-circle"></i></a>
-              <a routerLink="update-device" title="Update Device" class="btn btn-primary btn-action mr-1"><i class="fas fa-pencil-alt"></i></a>
-              <a routerLink="delete-device" title="Delete Device" class="btn btn-danger btn-action"><i class="fas fa-trash"></i></a>
+              <a routerLink="update-device/{{deviceGroup.id}}" title="Update Device" class="btn btn-primary btn-action mr-1"><i class="fas fa-pencil-alt"></i></a>
+              <button type="submit" (click)="deleteGroup(deviceGroup.id)" title="Delete Device" class="btn btn-danger btn-action"><i class="fas fa-trash"></i></button>
             </td>
           </tr>
           </tbody>

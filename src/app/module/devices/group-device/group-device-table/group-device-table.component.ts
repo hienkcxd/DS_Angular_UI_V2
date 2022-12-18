@@ -37,4 +37,8 @@ export class GroupDeviceTableComponent implements OnInit,OnDestroy {
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
+
+  deleteGroup(id: string) {
+
+  }
 }

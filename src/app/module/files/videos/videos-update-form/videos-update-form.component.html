@@ -1,3 +1,4 @@
+
 <section class="content-header">
 </section>
 <div class="section-body">
@@ -8,41 +9,33 @@
           <h4>Update Videos</h4>
         </div>
         <div class="card-body">
-          <form class="" action="#" method="post">
-
+          <form (ngSubmit)="updateFile()">
             <div class="form-group row mb-4">
-              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">User Name</label>
               <div class="col-sm-12 col-md-7">
-                <input type="text" name="TenDM" value="sach so 1" class="form-control">
+                <input type="text" name="fileId" class="form-control"  value="{{file.id}}"  [(ngModel)]="file.id">
               </div>
             </div>
             <div class="form-group row mb-4">
-              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Address</label>
+              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">File Name</label>
               <div class="col-sm-12 col-md-7">
-                <input type="text" name="TenDM" value="Kiên giang" class="form-control">
+                <input type="text" name="fileName" class="form-control" required [(ngModel)]="file.fileName" value="{{file.fileName}}">
               </div>
             </div>
             <div class="form-group row mb-4">
-              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Email</label>
+              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Link Google</label>
               <div class="col-sm-12 col-md-7">
-                <input type="text" name="TenDM" value="thugo@123.com" class="form-control">
+                <input type="text" class="form-control" name="fileLink" required [(ngModel)]="file.urlGoogleDrive" value="{{file.urlGoogleDrive}}">
               </div>
             </div>
-            <div class="form-group row mb-4">
-              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Phone</label>
-              <div class="col-sm-12 col-md-7">
-                <input type="text" name="TenDM" value="123123" class="form-control">
-              </div>
-            </div>
-
             <div class="form-group row mb-4">
               <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
               <div class="col-sm-12 col-md-7">
-                <input type="submit" class="btn btn-primary" value="Update videos">
+                <button type="submit" class="btn btn-primary">Save Videos</button>
               </div>
             </div>
           </form>
         </div>
+
       </div>
     </div>
   </div>
