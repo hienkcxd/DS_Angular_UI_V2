@@ -124,11 +124,11 @@ const routes: Routes = [
               {path: "update-device/:id", component: GroupDeviceUpdateComponent},
               {path: "delete-device/:id", component: GroupDeviceDeleteComponent},
             ]},
-          {path: "status", children:[
+          {path: "devices-system", children:[
               {path:"", component:StatusMainComponent},
-              {path: "status-detail", component: StatusDetailComponent},
-              {path: "status-update", component: StatusUpdateComponent},
-              {path: "status-delete", component: StatusDeleteComponent},
+              {path: "detail/:id", component: StatusDetailComponent},
+              {path: "update/:id", component: StatusUpdateComponent},
+              {path: "delete/:id", component: StatusDeleteComponent},
             ]},
           {path: "content-selector", children:[
               {path:"", component:ContentSelectorMainComponent},

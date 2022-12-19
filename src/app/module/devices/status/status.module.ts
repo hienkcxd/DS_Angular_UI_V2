@@ -8,6 +8,7 @@ import {RouterLinkWithHref} from "@angular/router";
 import { StatusDetailComponent } from './status-detail/status-detail.component';
 import { StatusUpdateComponent } from './status-update/status-update.component';
 import { StatusDeleteComponent } from './status-delete/status-delete.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -25,7 +26,8 @@ import { StatusDeleteComponent } from './status-delete/status-delete.component';
     imports: [
         BrowserModule,
         DataTablesModule,
-        RouterLinkWithHref
+        RouterLinkWithHref,
+        FormsModule
     ]
 })
 export class StatusModule { }
