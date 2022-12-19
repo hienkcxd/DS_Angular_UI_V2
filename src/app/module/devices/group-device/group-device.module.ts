@@ -9,6 +9,7 @@ import { GroupDeviceCreateComponent } from './group-device-create/group-device-c
 import { GroupDeviceUpdateComponent } from './group-device-update/group-device-update.component';
 import { GroupDeviceDeleteComponent } from './group-device-delete/group-device-delete.component';
 import { GroupDeviceDetailComponent } from './group-device-detail/group-device-detail.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -24,7 +25,8 @@ import { GroupDeviceDetailComponent } from './group-device-detail/group-device-d
   imports: [
     BrowserModule,
     DataTablesModule,
-    RouterLinkWithHref
+    RouterLinkWithHref,
+    FormsModule
   ]
 })
 export class GroupDeviceModule { }
