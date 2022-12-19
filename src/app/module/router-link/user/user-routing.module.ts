@@ -133,9 +133,9 @@ const routes: Routes = [
           {path: "content-selector", children:[
               {path:"", component:ContentSelectorMainComponent},
               {path: "create-content-selector", component: ContentSelectorCreateComponent},
-              {path: "delete-content-selector", component: ContentSelectorDeleteComponent},
-              {path: "detail-content-selector", component: ContentSelectorDetailComponent},
-              {path: "update-content-selector", component: ContentSelectorUpdateComponent},
+              {path: "delete-content-selector/:id", component: ContentSelectorDeleteComponent},
+              {path: "detail-content-selector/:id", component: ContentSelectorDetailComponent},
+              {path: "update-content-selector/:id", component: ContentSelectorUpdateComponent},
             ]},
           {path: "operator-history", children:[
               {path:"", component:OperatorHistoryMainComponent},

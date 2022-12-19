@@ -36,9 +36,8 @@ export class StoreMainComponent implements OnInit, OnDestroy  {
         'excel'
       ],
       retrieve: true,
-      stateSave: true,
-      pageLength: 7,
-      lengthMenu: [1,2,3,4,5,6,7],
+      pageLength: 5,
+      lengthMenu: [5,7,10],
     }
   }
   ngOnDestroy(): void {
@@ -46,14 +45,17 @@ export class StoreMainComponent implements OnInit, OnDestroy  {
   }
 
   delete(id:string) {
+    let currentURL = this.route.url;
     if(confirm("ban co chac muon xoa store ID - "+id)){
-      let currentURL = this.route.url;
       this.storeService.deleteStore(id).subscribe(data=>{
         alert("xóa thành công store Id - "+id)
         this.fetchStore();
-        this.route.navigate([currentURL])
+        this.route.navigate([currentURL]).then(()=>{
+          window.location.reload();
+        })
       },error=>{
         alert("không có quyền xóa!!!")
+
       });
     }else{
     }

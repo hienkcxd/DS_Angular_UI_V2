@@ -6,6 +6,8 @@ import { ContentSelectorTableComponent } from './content-selector-table/content-
 import {BrowserModule} from "@angular/platform-browser";
 import {DataTablesModule} from "angular-datatables";
 import {RouterLinkWithHref} from "@angular/router";
+import {FormsModule} from "@angular/forms";
+import {ContentSelectorUpdateComponent} from "./content-selector-update/content-selector-update.component";
 
 
 
@@ -13,12 +15,14 @@ import {RouterLinkWithHref} from "@angular/router";
   declarations: [
     ContentSelectorMainComponent,
     ContentSelectorCreateComponent,
+    ContentSelectorUpdateComponent,
     ContentSelectorTableComponent
   ],
   imports: [
     BrowserModule,
     DataTablesModule,
-    RouterLinkWithHref
+    RouterLinkWithHref,
+    FormsModule
   ]
 })
 export class ContentSelectorModule { }

@@ -46,7 +46,9 @@ export class GroupDeviceTableComponent implements OnInit,OnDestroy {
       this.deviceGroupService.deleteGroup(groupId).subscribe(data=>{
         alert("xóa thành công store Id - "+groupId)
         this.fetchDeviceGroup();
-        this.route.navigate([currentURL])
+        this.route.navigate([currentURL]).then(()=>{
+          window.location.reload();
+        })
       },error=>{
         alert("không có quyền xóa!!!")
       });
