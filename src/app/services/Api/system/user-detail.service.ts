@@ -31,7 +31,7 @@ export class UserDetailService {
   }
 
   getUserDetail():Observable<any>{
-    return this.http.get(`${this.baseUrl()}/user-detail`,{headers: this.httpOptions.headers});
+    return this.http.get(`${this.baseUrl()}/user-detail-dto`,{headers: this.httpOptions.headers});
   }
 
   changePassword(user:User){
